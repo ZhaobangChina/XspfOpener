@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="XspfOpener.Pages.PlaylistPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XspfOpener.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ListTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Image}" />
+                <TextBlock Text="{Binding Title}" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="DetailsTemplate">
+            <StackPanel Margin="8">
+                <Image Source="{Binding Image}" Margin="8"/>
+                <TextBlock Text="{Binding Title}" Margin="8"/>
+                <TextBlock Text="{Binding Location}" Margin="8"/>
+                <Button x:Name="vlcOpenButton" Content="用VLC打开" Margin="8"
+                        Click="vlcOpenButton_Click"/>
+                <Button x:Name="openButton" Content="打开" Margin="8"
+                        Click="openButton_Click"/>
+                <Button x:Name="openWithButton" Content="打开方式" Margin="8"
+                        Click="openWithButton_Click"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <controls:MasterDetailsView 
+            x:Name="displayList" 
+            Grid.Row="1"
+            ItemsSource="{Binding}"
+            ItemTemplate="{StaticResource ListTemplate}"
+            DetailsTemplate="{StaticResource DetailsTemplate}">
+            <controls:MasterDetailsView.MasterHeader>
+                <TextBox x:Name="searchBox" TextChanged="searchBox_TextChanged"/>
+            </controls:MasterDetailsView.MasterHeader>
+        </controls:MasterDetailsView>
+    </Grid>
+</Page>

@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="XspfOpener.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XspfOpener.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="FileItemTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding DisplayName}" FontSize="24"/>
+                <TextBlock Text="{Binding Path}" FontSize="16"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="openButton" Padding="12"
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="12" Click="openButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="OpenFile" />
+                    <TextBlock Text="打开" FontSize="20"/>
+                </StackPanel>
+            </Button>
+            <ListView x:Name="recentFileDisplayList" Grid.Row="1"
+                  MaxWidth="350" Margin="12"
+                  Header="最近打开的文件"
+                  ItemTemplate="{StaticResource FileItemTemplate}"
+                  ItemsSource="{Binding}"
+                  IsItemClickEnabled="True" ItemClick="recentFileDisplayList_ItemClick"/>
+        </Grid>
+    </Grid>
+</Page>

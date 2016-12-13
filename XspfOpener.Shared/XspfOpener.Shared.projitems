@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>832ed589-199d-4864-97fc-22d820316a0b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>XspfOpener</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Classes\Xspf.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classes\XspfTrack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classes\XspfTrackList.cs" />
+  </ItemGroup>
+</Project>
