@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:vlc="using:VLC"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -34,6 +35,12 @@
                         Click="openButton_Click"/>
                 <Button x:Name="openWithButton" Content="打开方式" Margin="8"
                         Click="openWithButton_Click"/>
+                <vlc:MediaElement AreTransportControlsEnabled="True" HardwareAcceleration="True"
+                  Source="{Binding Location}">
+                    <vlc:MediaElement.TransportControls>
+                        <vlc:MediaTransportControls/>
+                    </vlc:MediaElement.TransportControls>
+                </vlc:MediaElement>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
